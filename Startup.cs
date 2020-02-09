@@ -88,7 +88,7 @@ namespace AngularTest01
             app.UseEndpoints(endpoints =>
             {
                 // JS(cht.service.ts)를 통해 _hubConnection 바로 보는 주소와 일치 해야 함(/hub)
-                endpoints.MapHub<ChatHub>("/chat");
+                endpoints.MapHub<ChatHub>("/chathub");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");

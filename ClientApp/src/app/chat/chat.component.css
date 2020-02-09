@@ -4,7 +4,7 @@
 }
 
 .chat_header{
-  color: #808f05
+  color: #556677
 }
 
 img {
@@ -39,7 +39,6 @@ img {
   display: inline-block;
   text-align: right;
   width: 60%;
-  padding:
 }
 
 .headind_srch {
@@ -160,11 +159,11 @@ img {
 }
 
 .sent_msg p {
-  background: #808f05 none repeat scroll 0 0;
+  background: #fef01b none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
   margin: 0;
-  color: #fff;
+  color: black;
   padding: 5px 10px 5px 12px;
   width: 100%;
 }
@@ -193,17 +192,17 @@ img {
 }
 
 .msg_send_btn {
-  background: #808f05 none repeat scroll 0 0;
+  background: #fef01b none repeat scroll 0 0;
   border: medium none;
-  border-radius: 50%;
-  color: #fff;
+  border-radius: 10%;
+  color: black;
   cursor: pointer;
   font-size: 17px;
   height: 33px;
   position: absolute;
   right: 0;
   top: 11px;
-  width: 33px;
+  width: 100px;
 }
 
 .messaging {
@@ -211,6 +210,9 @@ img {
 }
 
 .msg_history {
-  height: 516px;
+  height: 500px;
+  margin: 5px;
   overflow-y: auto;
+  background-color: #9bbbd4
+  
 }
