@@ -27,8 +27,11 @@ namespace AngularTest01
         {
             services.AddControllersWithViews();
 
+            string redisConStr = Configuration.GetConnectionString("RedisConnectionStr");
+
             //services.AddSignalR();
             //services.AddSignalR().AddStackExchangeRedis("localhost:6379");
+            //services.AddSignalR().AddStackExchangeRedis("172.16.0.4:6379");
             services.AddSignalR()
                 .AddMessagePackProtocol()
                 .AddStackExchangeRedis(o =>
@@ -39,7 +42,11 @@ namespace AngularTest01
                         {
                             AbortOnConnectFail = false
                         };
-                        config.EndPoints.Add(IPAddress.Loopback, 0);
+                        //config.EndPoints.Add(IPAddress.Loopback, 0);
+                        //config.EndPoints.Add("172.16.0.4", 0);
+                        //config.EndPoints.Add(redisConStr, 6379);
+                        //config.EndPoints.Add("localhost", 6379);
+                        config.EndPoints.Add("172.16.0.4", 6379);
                         config.SetDefaultPorts();
                         var connection = await ConnectionMultiplexer.ConnectAsync(config, writer);
                         connection.ConnectionFailed += (_, e) =>
@@ -55,6 +62,7 @@ namespace AngularTest01
                         return connection;
                     };
                 });
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -87,7 +95,7 @@ namespace AngularTest01
 
             app.UseEndpoints(endpoints =>
             {
-                // JS(cht.service.ts)를 통해 _hubConnection 바로 보는 주소와 일치 해야 함(/hub)
+                // JS(chat.service.ts)를 통해 _hubConnection 바로 보는 주소와 일치 해야 함(/hub)
                 endpoints.MapHub<ChatHub>("/chathub");
                 endpoints.MapControllerRoute(
                     name: "default",

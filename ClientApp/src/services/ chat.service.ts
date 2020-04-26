@@ -22,8 +22,8 @@ export class ChatService {
 
   private createConnection() {
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl('/chathub') /** Startup.cs의 endpoints.MapHub<ChatHub>("/chat"); 경로 정보와 일치해야 함  */
-      .build();
+        .withUrl('/chathub') /*  Startup.cs의 endpoints.MapHub<ChatHub>("/chathub"); 경로 정보와 일치해야 함  */      
+        .build();
   }
 
   private startConnection(): void {
